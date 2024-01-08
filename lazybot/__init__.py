@@ -2,6 +2,7 @@
 # Ask Doubt on telegram @Krishna00P
 
 #Thanks @Lazy helping this journey 
+
 import logging
 import logging.config
 logging.config.fileConfig('logging.conf')
@@ -14,6 +15,7 @@ logging.basicConfig(
 )
 logging.getLogger("aiohttp").setLevel(logging.ERROR)
 logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
+logger = logging.getLogger(__name__)
 
 from pyrogram import Client
 from database.ia_filterdb import Media
@@ -22,13 +24,9 @@ from utils import temp
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
 from aiohttp import web
-
 from pyrogram import Client
-from info import *
-
 
 class LazyPrincessXBot(Client):
-
     def __init__(self):
         super().__init__(
             name=SESSION,
@@ -77,8 +75,8 @@ class LazyPrincessXBot(Client):
             for message in messages:
                 yield message
                 current += 1
-      
-LazyPrincessBot = LazyPrincessXBot()
 
 multi_clients = {}
 work_loads = {}
+
+LazyPrincessBot = LazyPrincessXBot()
